@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>Update User Details</h1>
+
+            <form action="#"
+                  th:action="@{/update/{id}(id=${userEdit.id})}"
+                  th:object="${userEdit}"
+                  method="post">
+<!--                <div class="form-group">-->
+<!--                    <label for="title" class="control-label">Title</label>-->
+                    <input class="form-control" type="hidden" th:field="*{title}" id="title" placeholder="Title">
+                    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="firstName">First Name</label>-->
+                    <input class="form-control" type="hidden" th:field="*{firstName}" id="firstName" placeholder="First Name">
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="lastName">Last Name</label>-->
+                    <input class="form-control" type="hidden" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="email">Email</label>-->
+                    <input class="form-control" type="hidden" th:field="*{email}" id="email" placeholder="email">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="password">Password</label>-->
+                    <input  class="form-control" type="hidden" th:field="*{password}" id="password" placeholder="password">
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+<!--                </div>-->
+
+                <div class="form-group">
+                    <label class="control-label" for="userPackage"> Package </label>
+                    <select th:field="*{userPackage}" class="form-control" id="userPackage">
+                        <option th:value="'Silver'" th:text="Silver"></option>
+                        <option th:value="'Gold'" th:text="Gold"></option>
+                        <option th:value="'Platinum'" th:text="Platinum"></option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('userPackage')}" th:errors="*{userPackage}"></span>
+                </div>
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="userPackage">Package</label>-->
+<!--                    <input class="form-control" type="text" th:field="*{userPackage}" id="userPackage" placeholder="userPackage">-->
+<!--                    <span th:if="${#fields.hasErrors('userPackage')}" th:errors="*{userPackage}"></span>-->
+<!--                </div>-->
+
+                <div class="form-group">
+                    <label class="control-label" for="cell">Cell</label>
+                    <input class="form-control" type="text" th:field="*{cell}" id="cell" placeholder="Cell">
+                    <span th:if="${#fields.hasErrors('cell')}" th:errors="*{cell}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="occupation">Occupation</label>
+                    <input class="form-control" type="text" th:field="*{occupation}" id="occupation" placeholder="Occupation">
+                    <span th:if="${#fields.hasErrors('occupation')}" th:errors="*{occupation}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="email">Address</label>
+                    <input class="form-control" type="text" th:field="*{address}" id="address" placeholder="Address">
+                    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+                </div>
+                <input type="submit" class="btn btn-success" value="Update User">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

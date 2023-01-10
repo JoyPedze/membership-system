@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Membership System</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<h1>Membership System</h1>
+		Welcome <span sec:authentication="principal.username"> User</span>
+
+
+		<div th:switch="${users}" >
+			<h2 th:case="null">No users yet!</h2>
+			<div th:case="*" >
+				<h2>Users</h2>
+				<table class="table table-striped table-responsive-md">
+					<thead>
+					<tr>
+						<th>Title</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Package</th>
+						<th>Cell</th>
+						<th>Occupation</th>
+						<th>Address</th>
+						<th>Credits</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.title}"></td>
+						<td th:text="${user.firstName}"></td>
+						<td th:text="${user.lastName}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.userPackage}"></td>
+						<td th:text="${user.cell}"></td>
+						<td th:text="${user.occupation}"></td>
+						<td th:text="${user.address}"></td>
+						<td th:text="${user.credits}"></td>
+						<td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+						<td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
