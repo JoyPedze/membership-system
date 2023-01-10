@@ -1,2 +1,2 @@
-# Membership System Code Virtus Practical Task
+# Membership System Practical Task
 
