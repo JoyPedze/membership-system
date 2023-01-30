@@ -1,2 +1,2 @@
-# Membership System Practical Task 
+# Membership System using Java and Thymeleaf
 
